@@ -1,6 +1,6 @@
 ﻿namespace MyTransportApp
 {
-    partial class Form1
+    partial class fahrplanApp
     {
         /// <summary>
         /// Erforderliche Designervariable.
@@ -42,10 +42,10 @@
             this.dauerColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datumEingabe = new System.Windows.Forms.DateTimePicker();
             this.zeitEingabe = new System.Windows.Forms.DateTimePicker();
-            this.startStationEingabe = new System.Windows.Forms.TextBox();
-            this.endStationEingabe = new System.Windows.Forms.TextBox();
             this.stopBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.stationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.startStationEingabe = new System.Windows.Forms.ComboBox();
+            this.endStationEingabe = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.verbindungenAnzeige)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stopBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stationsBindingSource)).BeginInit();
@@ -63,7 +63,7 @@
             // endStationLabel
             // 
             this.endStationLabel.AutoSize = true;
-            this.endStationLabel.Location = new System.Drawing.Point(12, 43);
+            this.endStationLabel.Location = new System.Drawing.Point(12, 45);
             this.endStationLabel.Name = "endStationLabel";
             this.endStationLabel.Size = new System.Drawing.Size(45, 17);
             this.endStationLabel.TabIndex = 1;
@@ -72,7 +72,7 @@
             // datumLabel
             // 
             this.datumLabel.AutoSize = true;
-            this.datumLabel.Location = new System.Drawing.Point(12, 73);
+            this.datumLabel.Location = new System.Drawing.Point(12, 77);
             this.datumLabel.Name = "datumLabel";
             this.datumLabel.Size = new System.Drawing.Size(53, 17);
             this.datumLabel.TabIndex = 2;
@@ -81,7 +81,7 @@
             // zeitLabel
             // 
             this.zeitLabel.AutoSize = true;
-            this.zeitLabel.Location = new System.Drawing.Point(12, 101);
+            this.zeitLabel.Location = new System.Drawing.Point(12, 105);
             this.zeitLabel.Name = "zeitLabel";
             this.zeitLabel.Size = new System.Drawing.Size(36, 17);
             this.zeitLabel.TabIndex = 3;
@@ -89,7 +89,7 @@
             // 
             // suchenButton
             // 
-            this.suchenButton.Location = new System.Drawing.Point(376, 68);
+            this.suchenButton.Location = new System.Drawing.Point(386, 72);
             this.suchenButton.Name = "suchenButton";
             this.suchenButton.Size = new System.Drawing.Size(124, 50);
             this.suchenButton.TabIndex = 8;
@@ -106,11 +106,11 @@
             this.endeColumn,
             this.ankunftColumn,
             this.dauerColumn});
-            this.verbindungenAnzeige.Location = new System.Drawing.Point(12, 124);
+            this.verbindungenAnzeige.Location = new System.Drawing.Point(12, 128);
             this.verbindungenAnzeige.Name = "verbindungenAnzeige";
             this.verbindungenAnzeige.RowHeadersWidth = 51;
             this.verbindungenAnzeige.RowTemplate.Height = 24;
-            this.verbindungenAnzeige.Size = new System.Drawing.Size(904, 303);
+            this.verbindungenAnzeige.Size = new System.Drawing.Size(870, 299);
             this.verbindungenAnzeige.TabIndex = 9;
             // 
             // startColumn
@@ -151,7 +151,7 @@
             // datumEingabe
             // 
             this.datumEingabe.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.datumEingabe.Location = new System.Drawing.Point(98, 68);
+            this.datumEingabe.Location = new System.Drawing.Point(98, 72);
             this.datumEingabe.Name = "datumEingabe";
             this.datumEingabe.Size = new System.Drawing.Size(126, 22);
             this.datumEingabe.TabIndex = 10;
@@ -160,28 +160,11 @@
             // zeitEingabe
             // 
             this.zeitEingabe.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.zeitEingabe.Location = new System.Drawing.Point(98, 96);
+            this.zeitEingabe.Location = new System.Drawing.Point(98, 100);
             this.zeitEingabe.Name = "zeitEingabe";
             this.zeitEingabe.Size = new System.Drawing.Size(126, 22);
             this.zeitEingabe.TabIndex = 11;
             this.zeitEingabe.Value = new System.DateTime(2021, 1, 7, 14, 30, 36, 0);
-            // 
-            // startStationEingabe
-            // 
-            this.startStationEingabe.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.startStationEingabe.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.startStationEingabe.Location = new System.Drawing.Point(98, 12);
-            this.startStationEingabe.Name = "startStationEingabe";
-            this.startStationEingabe.Size = new System.Drawing.Size(234, 22);
-            this.startStationEingabe.TabIndex = 12;
-            this.startStationEingabe.TextChanged += new System.EventHandler(this.startStationEingabe_TextChanged);
-            // 
-            // endStationEingabe
-            // 
-            this.endStationEingabe.Location = new System.Drawing.Point(98, 40);
-            this.endStationEingabe.Name = "endStationEingabe";
-            this.endStationEingabe.Size = new System.Drawing.Size(234, 22);
-            this.endStationEingabe.TabIndex = 13;
             // 
             // stopBindingSource
             // 
@@ -191,7 +174,25 @@
             // 
             this.stationsBindingSource.DataSource = typeof(SwissTransport.Models.Stations);
             // 
-            // Form1
+            // startStationEingabe
+            // 
+            this.startStationEingabe.FormattingEnabled = true;
+            this.startStationEingabe.Location = new System.Drawing.Point(98, 12);
+            this.startStationEingabe.Name = "startStationEingabe";
+            this.startStationEingabe.Size = new System.Drawing.Size(261, 24);
+            this.startStationEingabe.TabIndex = 14;
+            this.startStationEingabe.TextChanged += new System.EventHandler(this.startStationEingabe_TextChanged);
+            // 
+            // endStationEingabe
+            // 
+            this.endStationEingabe.FormattingEnabled = true;
+            this.endStationEingabe.Location = new System.Drawing.Point(98, 42);
+            this.endStationEingabe.Name = "endStationEingabe";
+            this.endStationEingabe.Size = new System.Drawing.Size(261, 24);
+            this.endStationEingabe.TabIndex = 15;
+            this.endStationEingabe.TextChanged += new System.EventHandler(this.endStationEingabe_TextChanged);
+            // 
+            // fahrplanApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -206,8 +207,8 @@
             this.Controls.Add(this.datumLabel);
             this.Controls.Add(this.endStationLabel);
             this.Controls.Add(this.startStationLabel);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "fahrplanApp";
+            this.Text = "SBB - Fahrplan";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.verbindungenAnzeige)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.stopBindingSource)).EndInit();
@@ -234,8 +235,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dauerColumn;
         private System.Windows.Forms.BindingSource stopBindingSource;
         private System.Windows.Forms.BindingSource stationsBindingSource;
-        private System.Windows.Forms.TextBox startStationEingabe;
-        private System.Windows.Forms.TextBox endStationEingabe;
+        private System.Windows.Forms.ComboBox startStationEingabe;
+        private System.Windows.Forms.ComboBox endStationEingabe;
     }
 }
 
