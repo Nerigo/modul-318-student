@@ -85,7 +85,7 @@ namespace MyTransportApp
         } 
         private void StartEndeAnzeige()
         {
-            var connections = transport.GetConnections(startStationEingabe.Text, endStationEingabe.Text);
+            var connections = transport.GetConnections(startStationEingabe.Text, endStationEingabe.Text, datumEingabe.Value.ToString(), zeitEingabe.Value.ToString());
 
             for (int i = 0; i < 4; i++)
             {
@@ -106,7 +106,7 @@ namespace MyTransportApp
 
             for (int i = 0; i < 4; i++)
             {
-                var connections = transport.GetConnections(startStationEingabe.Text, table.Entries[i].To);
+                var connections = transport.GetConnections(startStationEingabe.Text, table.Entries[i].To, datumEingabe.Value.ToString(), zeitEingabe.Value.ToString());
 
                 verbindungenAnzeige.Rows.Add(new string[]
                 {
