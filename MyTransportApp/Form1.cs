@@ -29,10 +29,9 @@ namespace MyTransportApp
 
         private void startStationEingabe_TextChanged(object sender, EventArgs e)
         {
-            suchenButton.Enabled = true;
-
             if (startStationEingabe.Text.Length > 0)
             {
+                suchenButton.Enabled = true;
                 try
                 {
                     var vorschlaege = transport.GetStations(startStationEingabe.Text);
@@ -45,6 +44,10 @@ namespace MyTransportApp
                 {
                     MessageBox.Show("Bitte eine gültige Eingabe machen.");
                 }                
+            }
+            else
+            {
+                suchenButton.Enabled = false;
             }
         }
 
