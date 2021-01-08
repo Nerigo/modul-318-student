@@ -92,13 +92,15 @@
             this.suchenButton.Location = new System.Drawing.Point(386, 72);
             this.suchenButton.Name = "suchenButton";
             this.suchenButton.Size = new System.Drawing.Size(124, 50);
-            this.suchenButton.TabIndex = 8;
+            this.suchenButton.TabIndex = 5;
             this.suchenButton.Text = "Suchen";
             this.suchenButton.UseVisualStyleBackColor = true;
             this.suchenButton.Click += new System.EventHandler(this.suchenButton_Click);
             // 
             // verbindungenAnzeige
             // 
+            this.verbindungenAnzeige.AllowUserToAddRows = false;
+            this.verbindungenAnzeige.AllowUserToDeleteRows = false;
             this.verbindungenAnzeige.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.verbindungenAnzeige.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.startColumn,
@@ -108,10 +110,11 @@
             this.dauerColumn});
             this.verbindungenAnzeige.Location = new System.Drawing.Point(12, 128);
             this.verbindungenAnzeige.Name = "verbindungenAnzeige";
+            this.verbindungenAnzeige.ReadOnly = true;
             this.verbindungenAnzeige.RowHeadersWidth = 51;
             this.verbindungenAnzeige.RowTemplate.Height = 24;
-            this.verbindungenAnzeige.Size = new System.Drawing.Size(869, 298);
-            this.verbindungenAnzeige.TabIndex = 9;
+            this.verbindungenAnzeige.Size = new System.Drawing.Size(911, 298);
+            this.verbindungenAnzeige.TabIndex = 6;
             // 
             // startColumn
             // 
@@ -154,7 +157,7 @@
             this.datumEingabe.Location = new System.Drawing.Point(98, 72);
             this.datumEingabe.Name = "datumEingabe";
             this.datumEingabe.Size = new System.Drawing.Size(126, 22);
-            this.datumEingabe.TabIndex = 10;
+            this.datumEingabe.TabIndex = 3;
             this.datumEingabe.Value = new System.DateTime(2021, 1, 7, 14, 30, 1, 0);
             // 
             // zeitEingabe
@@ -163,7 +166,7 @@
             this.zeitEingabe.Location = new System.Drawing.Point(98, 100);
             this.zeitEingabe.Name = "zeitEingabe";
             this.zeitEingabe.Size = new System.Drawing.Size(126, 22);
-            this.zeitEingabe.TabIndex = 11;
+            this.zeitEingabe.TabIndex = 4;
             this.zeitEingabe.Value = new System.DateTime(2021, 1, 7, 14, 30, 36, 0);
             // 
             // stopBindingSource
@@ -180,7 +183,7 @@
             this.startStationEingabe.Location = new System.Drawing.Point(98, 12);
             this.startStationEingabe.Name = "startStationEingabe";
             this.startStationEingabe.Size = new System.Drawing.Size(261, 24);
-            this.startStationEingabe.TabIndex = 14;
+            this.startStationEingabe.TabIndex = 1;
             this.startStationEingabe.TextChanged += new System.EventHandler(this.startStationEingabe_TextChanged);
             this.startStationEingabe.KeyDown += new System.Windows.Forms.KeyEventHandler(this.startStationEingabe_KeyDown);
             // 
@@ -190,7 +193,7 @@
             this.endStationEingabe.Location = new System.Drawing.Point(98, 42);
             this.endStationEingabe.Name = "endStationEingabe";
             this.endStationEingabe.Size = new System.Drawing.Size(261, 24);
-            this.endStationEingabe.TabIndex = 15;
+            this.endStationEingabe.TabIndex = 2;
             this.endStationEingabe.TextChanged += new System.EventHandler(this.endStationEingabe_TextChanged);
             this.endStationEingabe.KeyDown += new System.Windows.Forms.KeyEventHandler(this.endStationEingabe_KeyDown);
             // 
