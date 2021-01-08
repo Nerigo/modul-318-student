@@ -110,7 +110,7 @@
             this.verbindungenAnzeige.Name = "verbindungenAnzeige";
             this.verbindungenAnzeige.RowHeadersWidth = 51;
             this.verbindungenAnzeige.RowTemplate.Height = 24;
-            this.verbindungenAnzeige.Size = new System.Drawing.Size(870, 299);
+            this.verbindungenAnzeige.Size = new System.Drawing.Size(869, 298);
             this.verbindungenAnzeige.TabIndex = 9;
             // 
             // startColumn
@@ -182,6 +182,7 @@
             this.startStationEingabe.Size = new System.Drawing.Size(261, 24);
             this.startStationEingabe.TabIndex = 14;
             this.startStationEingabe.TextChanged += new System.EventHandler(this.startStationEingabe_TextChanged);
+            this.startStationEingabe.KeyDown += new System.Windows.Forms.KeyEventHandler(this.startStationEingabe_KeyDown);
             // 
             // endStationEingabe
             // 
@@ -191,12 +192,13 @@
             this.endStationEingabe.Size = new System.Drawing.Size(261, 24);
             this.endStationEingabe.TabIndex = 15;
             this.endStationEingabe.TextChanged += new System.EventHandler(this.endStationEingabe_TextChanged);
+            this.endStationEingabe.KeyDown += new System.Windows.Forms.KeyEventHandler(this.endStationEingabe_KeyDown);
             // 
             // fahrplanApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(928, 439);
+            this.ClientSize = new System.Drawing.Size(944, 438);
             this.Controls.Add(this.endStationEingabe);
             this.Controls.Add(this.startStationEingabe);
             this.Controls.Add(this.zeitEingabe);

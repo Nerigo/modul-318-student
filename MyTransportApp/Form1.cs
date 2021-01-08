@@ -14,9 +14,7 @@ namespace MyTransportApp
 {
     public partial class fahrplanApp : Form
     {
-        Stations stationen = new Stations();
         Transport transport = new Transport();
-        StationBoardRoot board = new StationBoardRoot();
         public fahrplanApp()
         {
             InitializeComponent();
@@ -82,41 +80,91 @@ namespace MyTransportApp
             {
                 StartAbfahrtstafel();                
             }
-        } 
+        }
+
+        private void startStationEingabe_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                verbindungenAnzeige.Rows.Clear();
+
+                if (endStationEingabe.Text.Length >= 1)
+                {
+                    StartEndeAnzeige();
+                }
+
+                else
+                {
+                    StartAbfahrtstafel();
+                }
+            }
+        }
+
+        private void endStationEingabe_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                verbindungenAnzeige.Rows.Clear();
+
+                if (endStationEingabe.Text.Length >= 1)
+                {
+                    StartEndeAnzeige();
+                }
+
+                else
+                {
+                    StartAbfahrtstafel();
+                }
+            }
+        }
         private void StartEndeAnzeige()
         {
-            var connections = transport.GetConnections(startStationEingabe.Text, endStationEingabe.Text, datumEingabe.Value.ToString(), zeitEingabe.Value.ToString());
-
-            for (int i = 0; i < 4; i++)
+            try
             {
-                verbindungenAnzeige.Rows.Add(new string[]
+                var connections = transport.GetConnections(startStationEingabe.Text, endStationEingabe.Text, datumEingabe.Value.ToString(), zeitEingabe.Value.ToString());
+
+                for (int i = 0; i < 4; i++)
                 {
+                    verbindungenAnzeige.Rows.Add(new string[]
+                    {
                         connections.ConnectionList[i].From.Station.Name.ToString(),
                         connections.ConnectionList[i].From.Departure.ToString(),
                         connections.ConnectionList[i].To.Station.Name.ToString(),
                         connections.ConnectionList[i].To.Arrival.ToString(),
                         connections.ConnectionList[i].Duration.ToString()
-                });
+                    });
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Keine Verbindung möglich.");
             }
         }
         private void StartAbfahrtstafel()
         {
-            var startStationId = transport.GetStations(startStationEingabe.Text).StationList[0].Id;
-            var table = transport.GetStationBoard(startStationEingabe.Text, startStationId);
-
-            for (int i = 0; i < 4; i++)
+            try
             {
-                var connections = transport.GetConnections(startStationEingabe.Text, table.Entries[i].To, datumEingabe.Value.ToString(), zeitEingabe.Value.ToString());
+                var startStationId = transport.GetStations(startStationEingabe.Text).StationList[0].Id;
+                var table = transport.GetStationBoard(startStationEingabe.Text, startStationId);
 
-                verbindungenAnzeige.Rows.Add(new string[]
+                for (int i = 0; i < 4; i++)
                 {
+                    var connections = transport.GetConnections(startStationEingabe.Text, table.Entries[i].To, datumEingabe.Value.ToString(), zeitEingabe.Value.ToString());
+
+                    verbindungenAnzeige.Rows.Add(new string[]
+                    {
                         connections.ConnectionList[i].From.Station.Name.ToString(),
                         connections.ConnectionList[i].From.Departure.ToString(),
                         table.Entries[i].To,
                         connections.ConnectionList[i].To.Arrival.ToString(),
                         connections.ConnectionList[i].Duration.ToString()
-                });
+                    });
+                }
             }
-        }
+            catch
+            {
+                MessageBox.Show("Keine Verbindung möglich.");
+            }
+        }        
     }
 }
